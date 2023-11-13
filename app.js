@@ -1,13 +1,30 @@
 var createError = require('http-errors');
-var express = require('express');
+//var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session')
+const express = require("express");
+const app = express()
+
+const sess = {
+ secret: 'ausazko hitz multzoa',
+ cookie: {
+  maxAge: 2*60*1000
+ },
+ resave: false,
+ saveUninitialized: true,
+}
+
+app.use(session(sess))
+
+app.listen(3000, () => {
+ console.log("Server running on port 3000");
+})
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

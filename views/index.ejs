@@ -6,6 +6,10 @@
   </head>
   <body>
     <h1><%= title %></h1>
+
+    <p> views: <%= session.views %></p>
+    <p>expires in: <%= session.cookie.maxAge / 1000 %>s</p>
+
     <p>Welcome to <%= title %></p>
   </body>
 </html>
